@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conference & Seminars | AurooEvents</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Navbar styling (you can reuse your existing one if included globally) */
+    .navbar {
+      background-color: #000 !important;
+      box-shadow: 0 2px 8px rgba(255,152,0,0.1);
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover, .navbar-brand:hover {
+      color: orange !important;
+    }
+
+    /* Hero Section */
+    .backimg {
+      position: relative;
+      text-align: center;
+    }
+    .backimg img {
+      width: 100%;
+      height: 95vh;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    .overlay-text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      color: #fff;
+      text-align: center;
+    }
+    .overlay-text h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: orange;
+    }
+    .overlay-text p {
+      font-size: 1.1rem;
+      color: #f1f1f1;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+    .btn-orange {
+      background-color: orange;
+      color: #fff;
+      border-radius: 25px;
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .btn-orange:hover {
+      background-color: #fff;
+      color: orange;
+    }
+
+    /* Booking Form */
+    .booking-container {
+      max-width: 650px;
+      margin: 80px auto;
+      background-color: #111;
+      border: 1px solid #fff;
+      border-radius: 15px;
+      padding: 35px;
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+    }
+    .form-control {
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #555;
+    }
+    .form-control:focus {
+      border-color: orange;
+      box-shadow: 0 0 8px orange;
+    }
+    .btn-book {
+      background-color: orange;
+      border: none;
+      color: white;
+      font-weight: bold;
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      transition: 0.3s;
+      
+    }
+    .btn-book:hover {
+      background-color: white;
+      color: orange;
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 20px;
+      color: orange;
+      font-weight: 700;
+    }
+
+    #event_type {
+      background-color: #222;
+      color: white;
+    }
+    #event_type:hover {
+      background-color: orange;
+      color: black;
+    }
+
+    a.back-home {
+      color: orange;
+      text-decoration: none;
+    }
+    a.back-home:hover {
+      text-decoration: underline;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Hero Section -->
+  <div class="backimg">
+    <img src="{% static 'c2img.jpg' %}" alt="Weddings & Receptions Background">
+    <div class="overlay-text">
+      <h1>Weddings & Receptions</h1>
+<p> Celebrate your love story with <b>AurooEvents</b>, where every <b>wedding</b> and <b>reception</b> is crafted to reflect your unique journey and personal style. We believe that your special day deserves nothing less than perfection — from the very first moment of planning to the final dance under the lights. Whether you dream of a traditional ceremony filled with cultural richness or a contemporary celebration with a modern flair, our team ensures your vision comes to life beautifully. </p> <p> At <b>AurooEvents</b>, we handle every element with precision and passion — from designing enchanting décor themes and coordinating seamless logistics to curating mesmerizing stage setups, lighting, and entertainment. Our culinary experts craft exquisite menus featuring a blend of traditional favorites and gourmet delights, ensuring an unforgettable dining experience for every guest. </p> <p> With our dedicated wedding planners, creative designers, and technical specialists by your side, you can relax and cherish every precious moment with your loved ones. We transform your wedding into an experience filled with elegance, joy, and timeless memories — a day that not only celebrates your union but also leaves an everlasting impression on everyone who attends. </p><br>
+      <a href="#book" class="btn-orange">Book Your Weddings & Receptions Below</a>
+    </div>
+  </div>
+
+  <!-- Booking Form Section -->
+  <div id="book" class="booking-container">
+    <h2 class="title">Book Your Weddings & Receptions</h2>
+    <form method="POST" action="{% url 'submit_booking1' %}">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="event_type" class="form-label">Event Type</label>
+        <select id="event_type" name="event_type" class="form-control" required>
+          <option value="">-- Select Event Type --</option>
+          <option>Wedding</option>
+          <option>Reception</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="date" class="form-label">Event Date</label>
+        <input type="date" id="date" name="date" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="guestsc" class="form-label">Number Of Guests</label>
+        <input type="number" id="guestsc" name="guestsc" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="guestsv" class="form-label">Food Count (Veg)</label>
+        <input type="number" id="guestsv" name="guestsv" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="guestsn" class="form-label">Food Count (Non-Veg)</label>
+        <input type="number" id="guestsn" name="guestsn" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="message" class="form-label">Additional Details</label>
+        <textarea id="message" name="message" rows="4" class="form-control" placeholder="Any special requirements or setup details..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-book">Submit Booking</button>
+    </form>
+  </div>
+
+  <div class="text-center mb-4">
+    <a href="{% url 'home' %}" class="back-home">← Back to Home</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

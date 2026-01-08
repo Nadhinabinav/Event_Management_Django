@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+<style>
+    
+/* Make body black */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar background black */
+.navbar {
+    background-color: #000000 !important;
+}
+
+/* Navbar brand and links white */
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    transition:
+    color 0.3s ease,     
+    transform 0.25s ease;
+    
+}
+
+/* Hover color orange */
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+    color: #ff9800 !important;
+    
+}
+
+/* Dropdown menu background black and text white */
+.dropdown-menu {
+    background-color: #000000;
+    border: 1px solid #333;
+}
+
+.dropdown-item {
+    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dropdown hover effect orange */
+.dropdown-item:hover {
+    background-color: #ff9800;
+    color: #000000;
+}
+
+/* Active link */
+.nav-link.active {
+    color: #ff9800 !important;
+}
+
+/* Navbar shadow effect (optional for depth) */
+.navbar {
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.1);
+}
+
+/* below nav bar */
+
+/* .backimg{
+    height: 600px;
+    width: 1600px;
+    background-color: white;
+}
+ .backimg {
+  position: relative;          
+  width: 100%;
+  max-width: 1600px;
+}
+
+.backimg img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  opacity: 0.5;    
+}    */
+
+      
+
+/* Text Overlay */
+/* .overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  color: black;
+  text-align: center;
+  padding: 20px 40px;
+
+  border-radius: 12px;
+  max-width: 80%; 
+}
+
+
+.overlay-text h1 {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 15px;
+  margin-top: 35px;
+  font-weight: bold;
+}
+
+.overlay-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+} */
+
+  #myCarousel .carousel-inner {
+    height: 400px;  
+    width: 700px;  
+    margin: auto;   
+  } 
+  
+
+  #myCarousel .carousel-item img {
+    object-fit: cover; 
+    height: 100%;
+    width: 100%;
+
+  }
+  .btn-orange {
+  background-color: orange;
+  color: white;
+  border-radius: 25px; 
+  border: 2px solid white;
+  padding: 10px 20px; 
+  
+}
+
+
+.card-title{
+  color: orange;
+}
+.card {
+  border-radius: 15px;
+  overflow: hidden; 
+}
+.card-img-top{
+  height: 50%;
+}
+/* footer */
+footer a.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #1a1a1a; 
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+footer a.social-icon:hover {
+  background-color: orange;
+  color: #000000 !important;
+  text-decoration: none;
+}
+footer a {
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: orange !important;
+  text-decoration: none;
+}
+
+
+    .backimg {
+      position: relative;
+      text-align: center;
+    }
+
+    .backimg img {
+      width: 100%;
+      height: 95vh;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      color: #fff;
+      text-align: center;
+    }
+
+    .overlay-text h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ff9800;
+    }
+
+    .overlay-text p {
+      font-size: 1.1rem;
+      color: #f1f1f1;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+    .dropdown-item:hover{
+      color: white;
+      background-color: #ff9800;
+    }
+
+
+</style>
+{% load static %}
+</head>
+
+<body style="background-color:#000000; color:#ffffff; font-family:Poppins, sans-serif; margin:0; padding:0; overflow-x:hidden;">
+    <nav class="navbar navbar-expand-lg" style="background-color:#000000; box-shadow:0 2px 8px rgba(255,152,0,0.1); width:100%;">
+        <div class="container-fluid" style="max-width:1200px; margin:0 auto; padding:0 15px;">
+            
+            <a class="navbar-brand" href="#" style="display:flex; align-items:center; color:#ffffff; font-size:1.4rem; font-weight:600; letter-spacing:1px; transition:color 0.3s ease;">
+                <img src="{% static 'event_iconA.png' %}" alt="Logo" style="height:30px; width:30px; margin-right:8px;border-radius: 50%;">
+                AUROOEVENTS
+            </a>
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="border-color:#ff9800;">
+                <span class="navbar-toggler-icon" style="background-image:url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%23ff9800\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+            </button>
+
+            
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto" style="flex-wrap:wrap;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">EVENTS</a>
+                        <ul class="dropdown-menu" style="background-color:#000000; border:1px solid #333;">
+                            <li><a class="dropdown-item" href="{% url 'booking' %}" style="color:#ffffff; font-size:0.95rem;">Weddings & Receptions</a></li>
+                            <li><a class="dropdown-item" href="{% url 'booking1' %}" style="color:#ffffff; font-size:0.95rem;">Conference & Seminars</a></li>
+                            <li><a class="dropdown-item" href="{% url 'booking2' %}" style="color:#ffffff; font-size:0.95rem;">Birthday Parties</a></li>
+                            <li><a class="dropdown-item" href="{% url 'booking3' %}" style="color:#ffffff; font-size:0.95rem;">Music Concerts</a></li>
+                            <li><a class="dropdown-item" href="{% url 'booking4' %}" style="color:#ffffff; font-size:0.95rem;">Baby Showers</a></li>
+                            <li><a class="dropdown-item" href="{% url 'booking5' %}" style="color:#ffffff; font-size:0.95rem;">Graduation Ceremonies</a></li>
+                            <li><a class="dropdown-item" href="{% url 'booking5' %}" style="color:#ffffff; font-size:0.95rem;">Beach Parties</a></li>
+                            <li><a class="dropdown-item" href="{% url 'booking7' %}" style="color:#ffffff; font-size:0.95rem;">Housewarming Parties</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'myrgs' %}" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">MY REGISTRATIONS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'feed' %}" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">FEEDBACK</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">CONTACT US</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">SIGNUP</a>
+                        <ul class="dropdown-menu" style="background-color:#000000; border:1px solid #333;">
+                            <li><a class="dropdown-item" href="{% url 'signin' %}" style="color:#ffffff; font-size:0.95rem;">SIGN IN</a></li>
+                            <li><a class="dropdown-item" href="{% url 'signout' %}" style="color:#ffffff; font-size:0.95rem;">SIGN OUT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav><br>
+
+    <!-- <div class="backimg">
+        <img style="height: 600px; width: 1600px; opacity: 0.5;" src="c4img.jpg" >
+        <div class="overlay-text" style="font-weight: bold; width: 800px;">
+    <h1>Crafting Moments, Creating Magic</h1>
+    <p>
+      Step into a world where every celebration tells a story. From timeless weddings to high-energy corporate galas,
+      we transform visions into experiences that shine.</p><br> <p>At AurooEvents, every detail is designed to mesmerize —
+      because your moments deserve more than just planning; they deserve perfection.</p>
+    </p>
+  </div> 
+
+    </div><br><br>!-->
+    <div class="backimg">
+    <img src="{% static 'c4img.jpg' %}" alt="Event Background">
+    <div class="overlay-text">
+      <h1>Crafting Moments, Creating Magic</h1>
+      <p>Step into a world where every celebration tells a story. From timeless weddings to high-energy corporate galas, we transform visions into experiences that shine.</p><br>
+      <p>At AurooEvents, every detail is designed to mesmerize — because your moments deserve more than just planning; they deserve perfection.</p>
+      <a href="#myCarousel" 
+       style="display:inline-block; margin-top:20px; padding:12px 25px; background-color:orange; color:#fff; border-radius:25px; text-decoration:none; font-weight:600; font-size:1rem; transition:0.3s;"
+       onmouseover="this.style.backgroundColor='#ffb74d'; this.style.color='#000';"
+       onmouseout="this.style.backgroundColor='orange'; this.style.color='#fff';">
+       Scroll Down To Book Events
+    </a>
+</div>
+</div><br><br>
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="500">
+
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+  </div>
+
+  
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'slide1.png' %}" class="d-block w-100" alt="Slide 1">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'slide2.png' %}" class="d-block w-100" alt="Slide 2">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'slide3.png' %}" class="d-block w-100" alt="Slide 3">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'slide4.png' %}" class="d-block w-100" alt="Slide 3">
+    </div>
+
+  </div><br><br>
+
+</div>
+
+  <!-- <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <a href="#" class="btn btn-primary" style="background-color: orange; color: white; border-radius: 40%; border-color: white;">Go somewhere</a>
+  </div>
+</div> -->
+
+<div class="card-container" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+  <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+    <img src="{% static 'cardimg.png' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Conference & Seminars</h5>
+      <p class="card-text">Experience impactful conferences and seminars that inspire collaboration, share innovative ideas, and create meaningful professional connections for growth and success.</p>
+      <a href="{% url 'submit_booking' %}" class="btn btn-primary" style="background-color: orange; color: white;  border-color: white;">Learn More & Book Event</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+    <img src="{% static 'c2img.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Weddings & Receptions</h5>
+      <p class="card-text">Celebrate unforgettable weddings and receptions with elegant décor, flawless planning, and magical moments that turn your special day into perfection.</p>
+      <a href="{% url 'submit_booking1' %}" class="btn btn-primary" style="background-color: orange; color: white;  border-color: white;">Learn More & Book Event</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+    <img src="{% static 'cardimg1.webp' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Birthday Parties</h5>
+      <p class="card-text">Create joyful birthday parties filled with fun themes, vibrant décor, delightful surprises, and unforgettable memories for guests of all ages.</p>
+      <a href="{% url 'submit_booking2' %}" class="btn btn-primary" style="background-color: orange; color: white;  border-color: white;">Learn More & Book Event</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+    <img src="{% static 'cardimg3.jpeg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Music Concerts</h5>
+      <p class="card-text">Experience electrifying music concerts with stunning performances, vibrant lighting, and energetic crowds that make every beat an unforgettable celebration.</p>
+      <a href="{% url 'submit_booking3' %}" class="btn btn-primary" style="background-color: orange; color: white;  border-color: white;">Learn More & Book Event</a>
+    </div>
+  </div>
+
+</div><br><br>
+
+<div class="card-container" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+  <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+    <img src="{% static 'cardimg2.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Baby Showers</h5>
+      <p class="card-text">Celebrate beautiful beginnings with charming baby showers featuring elegant décor, joyful moments, heartfelt wishes, and memories to cherish forever.</p>
+      <a href="{% url 'submit_booking4' %}" class="btn btn-primary" style="background-color: orange; color: white; border-color: white;">Learn More & Book Event</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+    <img src="{% static 'cardimg4.webp' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Graduation Ceremonies</h5>
+      <p class="card-text">Honor achievements with memorable graduation ceremonies, featuring elegant setups, inspiring speeches, joyful celebrations, and lasting memories for graduates and their families.</p>
+      <a href="{% url 'submit_booking5' %}" class="btn btn-primary" style="background-color: orange; color: white;  border-color: white;">Learn More & Book Event</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+    <img src="{% static 'cardimg5.jpg' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Beach Parties</h5>
+      <p class="card-text">Enjoy vibrant beach parties with sun, sand, music, games, and unforgettable moments, creating the perfect celebration by the seaside.</p>
+      <a href="{% url 'submit_booking6' %}" class="btn btn-primary" style="background-color: orange; color: white; border-color: white;">Learn More & Book Event</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem; background-color: black; color: white; border-radius: 10px; border-color: white;">
+    <img src="{% static 'cardimg6.webp' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Housewarming Parties</h5>
+      <p class="card-text">Celebrate new beginnings with housewarming parties featuring warm décor, joyful gatherings, delicious treats, and memorable moments with family and friends.</p>
+      <a href="{% url 'submit_booking7' %}" class="btn btn-primary" style="background-color: orange; color: white; border-color: white;">Learn More & Book Event</a>
+    </div>
+  </div>
+
+</div><br><br>
+
+<footer class="bg-black text-white pt-4 pb-3" style="font-family: 'Poppins', sans-serif; border-top: 3px solid orange;">
+  <div class="container">
+    <div class="row align-items-start">
+
+      
+      <div class="col-md-4 mb-3">
+        <h6 style="color: orange; font-weight:bold;">Contact Us</h6>
+        <p style="margin:0; font-size:0.9rem;">📧 <a href="mailto:AurooEventsgmail@gmail.com" class="text-white text-decoration-none">AurooEventsgmail@gmail.com</a></p>
+        <p style="margin:0; font-size:0.9rem;">📞 8754958684</p>
+      </div>
+
+      
+      <div class="col-md-4 mb-3">
+        <h6 style="color: orange; font-weight:bold;">Quick Links</h6>
+        <div class="d-flex flex-column" style="gap:5px;">
+          <a href="{% url 'home' %}" class="text-white text-decoration-none">HOME</a>
+          <a href="#" class="text-white text-decoration-none">EVENTS</a>
+          <a href="{% url 'myrgs' %}" class="text-white text-decoration-none">MY REGISTRATIONS</a>
+          <a href="{% url 'feed' %}" class="text-white text-decoration-none">FEEDBACK</a>
+          <!-- <a href="about.html" class="text-white text-decoration-none">ABOUT US</a> -->
+          <a class="nav-link" href="{% url 'about' %}">ABOUT US</a>
+          <a href="{% url 'contact' %}" class="text-white text-decoration-none">CONTACT US</a>
+          <a href="{% url 'signout' %}" class="text-white text-decoration-none">LOGOUT</a>
+
+        </div>
+      </div>
+
+      
+      <div class="col-md-4 mb-3">
+        <h6 style="color: orange; font-weight:bold;">Follow Us</h6>
+        <div class="d-flex gap-2 mt-1">
+          <a href="https://www.facebook.com/login/?locale=en_GB" class="text-white social-icon"><i class="bi bi-facebook"></i></a>
+          <a href="" class="text-white social-icon"><i class="bi bi-instagram"></i></a>
+          <a href="https://x.com/i/flow/login?lang=en" class="text-white social-icon"><i class="bi bi-twitter"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr style="border-color: #ff9800; opacity:0.5; margin:10px 0;">
+
+    <div class="text-center" style="font-size:0.85rem;">
+      &copy; 2025 AurooEvents. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>

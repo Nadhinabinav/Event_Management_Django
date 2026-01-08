@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback | AurooEvents</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    nav.navbar {
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 2px 15px rgba(255, 165, 0, 0.2);
+    }
+    nav a.nav-link, nav .navbar-brand {
+      color: white !important;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    nav a.nav-link:hover {
+      color: #ff8000 !important;
+    }
+    .feedback-section {
+      padding: 120px 20px 60px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .feedback-section h1 {
+      font-size: 3rem;
+      color: #ff8000;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .feedback-section p {
+      color: #ccc;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .form-control, .form-select {
+      background-color: #111;
+      color: #fff;
+      border: 1px solid #ff8000;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #ff8000;
+      box-shadow: 0 0 5px #ff8000;
+      outline: none;
+      background-color:white;
+      color: black;
+    }
+    .btn-orange {
+      background-color: orange;
+      border-radius: 25px;
+      border: 2px solid white;
+      padding: 10px 20px;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .btn-orange:hover {
+      background-color: #ff9500;
+      color: #fff;
+    }
+    footer {
+      background-color: #000;
+      padding: 20px 0;
+      text-align: center;
+      color: #999;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+      margin-top: 60px;
+    }
+    .dropdown-item{
+      color: white;
+    }
+    .dropdown-item:hover{
+      color: white;
+      background-color: #ff9500;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top" style="background-color:#000000; box-shadow:0 2px 8px rgba(255,152,0,0.1); width:100%;">
+    <div class="container-fluid" style="max-width:1200px; margin:0 auto; padding:0 15px;">
+      
+     
+      <a class="navbar-brand" href="#" style="display:flex; align-items:center; color:#ffffff; font-size:1.4rem; font-weight:600; letter-spacing:1px; transition:color 0.3s ease;">
+        <img src="{% static 'event_iconA.png' %}" alt="Logo" style="height:30px; width:30px; margin-right:8px; border-radius:50%;">
+        AUROOEVENTS
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
+              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" 
+              style="border-color:#ff9800;">
+        <span class="navbar-toggler-icon" style="background-image:url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%23ff9800\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+      </button>
+
+     
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto" style="flex-wrap:wrap;">
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">EVENTS</a>
+            <ul class="dropdown-menu" style="background-color:#000; border:1px solid #333;">
+              <li><a class="dropdown-item" href="{% url 'booking' %}">Weddings & Receptions</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking1' %}">Conference & Seminars</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking2' %}">Birthday Parties</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking3' %}">Music Concerts</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking4' %}">Baby Showers</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking5' %}">Graduation Ceremonies</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking6' %}">Beach Parties</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking7' %}">HouseWarming Parties</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'myrgs' %}">MY REGISTRATIONS</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'feed' %}">FEEDBACK</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT US</a></li>
+          <li class="nav-item"><a class="nav-link active text-warning" href="{% url 'contact' %}">CONTACT US</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">SIGNUP</a>
+            <ul class="dropdown-menu" style="background-color:#000; border:1px solid #333;">
+              <li><a class="dropdown-item" href="{% url 'signin' %}">SIGN IN</a></li>
+              <li><a class="dropdown-item" href="{% url 'signout' %}">LOGOUT</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+
+  <!-- Feedback Section -->
+  <section class="feedback-section">
+    <h1>We Value Your Feedback</h1>
+    <p>Share your thoughts and experiences with us so we can make every event extraordinary for you!</p>
+
+    <form method="POST" action="{% url 'submit_f' %}">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="name" class="form-label">Your Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="mb-3">
+        <label for="feedback" class="form-label">Your Feedback</label>
+        <textarea class="form-control" id="feedback" name="feedback" rows="5" placeholder="Write your feedback..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-orange">Submit Feedback</button>
+    </form>
+{% if messages and request.path == '/feed/' %}
+<ul>
+  {% for message in messages %}
+    <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+      <!-- {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} -->
+  </section>
+
+  <footer>
+    © 2025 AurooEvents | All Rights Reserved
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

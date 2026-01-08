@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | AurooEvents</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    nav.navbar {
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 2px 15px rgba(255, 165, 0, 0.2);
+    }
+    nav a.nav-link, nav .navbar-brand {
+      color: white !important;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    nav a.nav-link:hover {
+      color: #ff8000 !important;
+    }
+    .contact-section {
+      padding: 100px 20px;
+      text-align: center;
+      background: linear-gradient(145deg, #111, #1a1a1a);
+    }
+    .contact-section h1 {
+      font-size: 3rem;
+      color: #ff8000;
+      margin-bottom: 20px;
+    }
+    .contact-section p {
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .contact-card {
+      background: #151515;
+      border: 1px solid #ff8000;
+      border-radius: 15px;
+      padding: 25px 30px;
+      width: 280px;
+      transition: transform 0.3s ease,box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(255, 128, 0, 0.4);
+    }
+    .contact-card i {
+      font-size: 2rem;
+      color: #ff8000;
+      margin-bottom: 10px;
+    }
+    .contact-card h5 {
+      color: #fff;
+      margin-bottom: 5px;
+    }
+    .contact-card p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    .social-icons a {
+      color: #ff8000;
+      font-size: 1.8rem;
+      margin: 0 15px;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+    footer {
+      background-color: #000;
+      padding: 20px 0;
+      text-align: center;
+      color: #999;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+    }
+    .dropdown-item:hover{
+      background-color: #ff9800;
+    }
+  </style>
+  {% load static %}
+</head>
+<body>
+
+  <!-- Navbar -->
+   <!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top" style="background-color:#000000; box-shadow:0 2px 8px rgba(255,152,0,0.1); width:100%;">
+  <div class="container-fluid" style="max-width:1200px; margin:0 auto; padding:0 15px;">
+    
+    <!-- Brand -->
+    <a class="navbar-brand" href="#" style="display:flex; align-items:center; color:#ffffff; font-size:1.4rem; font-weight:600; letter-spacing:1px; transition:color 0.3s ease;">
+      <img src="{% static 'event_iconA.png' %}" alt="Logo" style="height:30px; width:30px; margin-right:8px; border-radius:50%;">
+      AUROOEVENTS
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" 
+            style="border-color:#ff9800;">
+      <span class="navbar-toggler-icon" style="background-image:url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%23ff9800\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto" style="flex-wrap:wrap;">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">HOME</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" 
+             style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">
+             EVENTS
+          </a>
+          <ul class="dropdown-menu" style="background-color:#000000; border:1px solid #333;">
+            <li><a class="dropdown-item" href="{% url 'booking' %}" style="color:#ffffff; font-size:0.95rem;">Weddings & Receptions</a></li>
+            <li><a class="dropdown-item" href="{% url 'booking1' %}" style="color:#ffffff; font-size:0.95rem;">Conference & Seminars</a></li>
+            <li><a class="dropdown-item" href="{% url 'booking2' %}" style="color:#ffffff; font-size:0.95rem;">Birthday Parties</a></li>
+            <li><a class="dropdown-item" href="{% url 'booking3' %}" style="color:#ffffff; font-size:0.95rem;">Music Concerts</a></li>
+            <li><a class="dropdown-item" href="{% url 'booking4' %}"style="color:#ffffff; font-size:0.95rem;">Baby Showers</a></li>
+            <li><a class="dropdown-item" href="{% url 'booking5' %}" style="color:#ffffff; font-size:0.95rem;">Graduation Ceremonies</a></li>
+            <li><a class="dropdown-item" href="{% url 'booking6' %}" style="color:#ffffff; font-size:0.95rem;">Beach Parties</a></li>
+            <li><a class="dropdown-item" href="{% url 'booking7' %}" style="color:#ffffff; font-size:0.95rem;">Housewarming Parties</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'myrgs' %}" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">MY REGISTRATIONS</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'feed' %}" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">FEEDBACK</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}" style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">ABOUT US</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active text-warning" href="{% url 'contact' %}" style="font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">CONTACT US</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" 
+             style="color:#ffffff; font-size:1rem; font-weight:500; margin-right:12px; transition:color 0.3s ease;">
+             SIGNUP
+          </a>
+          <ul class="dropdown-menu" style="background-color:#000000; border:1px solid #333;">
+            <li><a class="dropdown-item" href="{% url 'signin' %}" style="color:#ffffff; font-size:0.95rem;">SIGN IN</a></li>
+            <li><a class="dropdown-item" href="{% url 'signup' %}" style="color:#ffffff; font-size:0.95rem;">LOGOUT</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+
+
+
+  <!-- <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">AurooEvents</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon" style="color:white;"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
+          <li class="nav-item"><a class="nav-link active text-warning" href="{% url 'contact' %}">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h1>Get in Touch</h1>
+    <p>We love to hear from you! Whether you’re planning a wedding, a corporate event, or a private celebration, AurooEvents is here to make it extraordinary.</p>
+    
+    <div class="contact-info">
+      <div class="contact-card">
+        <i class="bi bi-envelope-fill"></i>
+        <h5>Email</h5>
+        <p>AurooEvents@gmail.com</p>
+      </div>
+      <div class="contact-card">
+        <i class="bi bi-telephone-fill"></i>
+        <h5>Phone</h5>
+        <p>+91 87549 58684</p>
+        <p>+91 98659 23639</p>
+      </div>
+      <div class="contact-card">
+        <i class="bi bi-geo-alt-fill"></i>
+        <h5>Location</h5>
+        <p>Coimbatore, Tamil Nadu, India</p>
+      </div>
+    </div>
+
+    <div class="social-icons">
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.facebook.com/login/?locale=en_GB"><i class="bi bi-facebook"></i></a>
+      <a href="https://x.com/i/flow/login?lang=en"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://www.linkedin.com/company/login/"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.youtube.com/feed/you"><i class="bi bi-youtube"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 AurooEvents | All Rights Reserved
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

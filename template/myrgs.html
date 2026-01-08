@@ -1,0 +1,469 @@
+<!--
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Registrations | AurooEvents</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      margin:0;
+      padding:0;
+    }
+
+    /* Navbar from home.html */
+    .navbar {
+      background-color: #000 !important;
+      box-shadow: 0 2px 8px rgba(255,152,0,0.1);
+    }
+
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-brand:hover, .nav-link:hover {
+      color: #ff9800 !important;
+    }
+
+    .dropdown-menu {
+      background-color: #000;
+      border: 1px solid #333;
+    }
+
+    .dropdown-item {
+      color: #fff;
+    }
+
+    .dropdown-item:hover {
+      background-color: #ff9800;
+      color: #000;
+    }
+
+    .nav-link.active {
+      color: #ff9800 !important;
+    }
+
+    /* Cards */
+    .container {
+      margin-top: 50px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+      color: #000;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .card-body h5 {
+      color: #ff7e00;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .card-body p {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    .card-body strong {
+      color: #333;
+    }
+
+    .page-title {
+      text-align: center;
+      font-weight: 700;
+      margin: 40px 0 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    }
+
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+ #NAV BAR CODE:
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid" style="max-width:1200px; margin:0 auto; padding:0 15px;">
+      <a class="navbar-brand" href="{% url 'home' %}" style="display:flex; align-items:center;">
+        <img src="{% static 'event_iconA.png' %}" alt="Logo" style="height:30px; width:30px; margin-right:8px;border-radius: 50%;">
+        AUROOEVENTS
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon" style="background-image:url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%23ff9800\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto" style="flex-wrap:wrap;">
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">EVENTS</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Weddings & Receptions</a></li>
+              <li><a class="dropdown-item" href="#">Conference & Seminars</a></li>
+              <li><a class="dropdown-item" href="#">Birthday Parties</a></li>
+              <li><a class="dropdown-item" href="#">Music Concerts</a></li>
+              <li><a class="dropdown-item" href="#">Baby Showers</a></li>
+              <li><a class="dropdown-item" href="#">Graduation Ceremonies</a></li>
+              <li><a class="dropdown-item" href="#">Beach Parties</a></li>
+              <li><a class="dropdown-item" href="#">Housewarming Parties</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'myrgs' %}">MY REGISTRATIONS</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'feed' %}">FEEDBACK</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT US</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT US</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ 
+  <h2 class="page-title">🎉 My Event Registrations</h2>
+
+ 
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+      {% if bookings %}
+        {% for booking in bookings %}
+          <div class="col-md-4 col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ booking.event_type }}</h5>
+                <hr>
+                <p><strong>Booked By:</strong> {{ booking.name }}</p>
+                <p><strong>Email:</strong> {{ booking.email }}</p>
+                <p><strong>Event Date:</strong> {{ booking.date }}</p>
+                <p><strong>Guests Total Count (Approx):</strong> {{ booking.guestsc }}</p>
+                <p><strong>Guests Veg-Count  (Approx):</strong>{{ booking.guestsv }}</p>
+                <p><strong>Guests Non-Veg Count  (Approx):</strong> {{ booking.guestsn }}</p>
+                <p><strong>Message:</strong> {{ booking.message }}</p><br>
+
+                #NO NEED
+
+                 <button style="background-color: green; color: white; border: 2px solid black; border-radius: 7px; padding: 5px 10px 5px; text-align: center; margin-left: 100px;">Update</button> -->
+                <!-- <a href="{% url 'deleteData' booking.id %}" 
+   style="background-color: red; color: white; border: 2px solid black; 
+          border-radius: 7px; padding: 5px 10px; text-align: center; 
+          margin-left: 10px; text-decoration:none; display:inline-block;">
+  Delete
+</a> 
+# NO NEDD END HERE
+
+<a href="{% url 'updateData' booking.id %}" 
+   style="background:green; color:white; border-radius:7px; border: 2px solid black; padding:5px 10px; margin-left: 90px; text-decoration:none; display:inline-block;">
+   Update
+</a>
+
+<form action="{% url 'deleteData' booking.id %}" method="POST" style="display:inline;">
+  {% csrf_token %}
+  <button type="submit" style="background:red; color:white; border: 2px solid black; border-radius:7px; padding:5px 10px; margin-left: 10px;">
+    Delete
+  </button>
+</form>
+              </div>
+            </div>
+
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-center text-light">No bookings found!</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer>
+    © 2025 AurooEvents. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+  -->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Registrations | AurooEvents</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      margin:0;
+      padding:0;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #000 !important;
+      box-shadow: 0 2px 8px rgba(255,152,0,0.1);
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .navbar-brand:hover, .nav-link:hover { color: #ff9800 !important; }
+    .dropdown-menu { background-color: #000; border: 1px solid #333; }
+    .dropdown-item { color: #fff; }
+    .dropdown-item:hover { background-color: #ff9800; color: #000; }
+    .nav-link.active { color: #ff9800 !important; }
+
+    /* General layout */
+    .page-wrap { max-width:1200px; margin: 40px auto; padding: 0 15px; }
+    .page-title {
+      text-align: center;
+      font-weight: 700;
+      margin: 20px 0 10px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+
+    /* Card styles (upcoming) */
+    .card {
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background-color: #fff;
+      color: #000;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0,0,0,0.2); }
+    .card-body h5 { color: #ff7e00; font-weight: 700; font-size: 20px; }
+    .card-body p { margin: 6px 0; font-size: 15px; }
+    .card-body strong { color: #333; }
+
+    /* Completed card (muted) */
+    .card.completed {
+      background: linear-gradient(180deg, #f5f5f5 0%, #e9e9e9 100%);
+      color: #333;
+      opacity: 0.92;
+      box-shadow: none;
+    }
+    .card.completed .card-body h5 { color: #6c757d; }
+    .badge-completed {
+      background: #6c757d;
+      color: #fff;
+      border-radius: 12px;
+      padding: 6px 10px;
+      font-weight:600;
+      font-size: 0.85rem;
+    }
+
+    /* Buttons */
+    .btn-custom {
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .btn-update { background: #198754; color: #fff; border: 2px solid #0f5132; }
+    .btn-delete { background: #dc3545; color: #fff; border: 2px solid #a71d2a; }
+
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .card { margin-bottom: 18px; }
+      .page-title { font-size: 18px; gap:6px; }
+    }
+
+    .dropdown-item{
+      color: white;
+    }
+    .dropdown-item:hover{
+      color: white;
+      background-color: #ff9500;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid" style="max-width:1200px; margin:0 auto; padding:0 15px;">
+      <a class="navbar-brand" href="{% url 'home' %}" style="display:flex; align-items:center;">
+        <img src="{% static 'event_iconA.png' %}" alt="Logo" style="height:30px; width:30px; margin-right:8px;border-radius: 50%;">
+        AUROOEVENTS
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon" style="background-image:url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'%23ff9800\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/%3E%3C/svg%3E');"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto" style="flex-wrap:wrap;">
+          <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">EVENTS</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'booking' %}">Weddings & Receptions</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking1' %}">Conference & Seminars</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking2' %}">Birthday Parties</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking3' %}">Music Concerts</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking4' %}">Baby Showers</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking5' %}">Graduation Ceremonies</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking6' %}">Beach Parties</a></li>
+              <li><a class="dropdown-item" href="{% url 'booking7' %}">Housewarming Parties</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'myrgs' %}">MY REGISTRATIONS</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'feed' %}">FEEDBACK</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT US</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT US</a></li>
+        </ul>
+        <li class="nav-item dropdown" style="list-style: none;">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> SIGNUP</a>
+            <ul class="dropdown-menu" style="background-color:#000; border:1px solid #333;">
+              <li><a class="dropdown-item" href="{% url 'signin' %}">SIGN IN</a></li>
+              <li><a class="dropdown-item" href="{% url 'signout' %}">LOGOUT</a></li>
+            </ul>
+          </li>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- Page Header -->
+    <h2 class="page-title">🎉 My Event Registrations</h2>
+
+    <!-- UPCOMING EVENTS -->
+    <h4 style="color:#fff; margin-top:18px; margin-bottom:10px;">✨ Upcoming Events</h4>
+    <div class="row g-4 justify-content-center mb-4">
+      {% if upcoming and upcoming.exists %}
+        {% for booking in upcoming %}
+          <div class="col-lg-4 col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <h5 class="card-title mb-0">{{ booking.event_type }}</h5>
+                  <small class="text-muted">{{ booking.date }}</small>
+                </div>
+                <hr>
+                <p><strong>Booked By:</strong> {{ booking.name }}</p>
+                <p><strong>Email:</strong> {{ booking.email }}</p>
+                <p><strong>Guests Total Count (Approx):</strong> {{ booking.guestsc }}</p>
+                <p><strong>Veg (Approx):</strong> {{ booking.guestsv }} &nbsp; <strong>Non-Veg (Approx):</strong> {{ booking.guestsn }}</p>
+                <p><strong>Message:</strong> {{ booking.message|default:"—" }}</p>
+
+                <div class="mt-3 d-flex">
+                  <a href="{% url 'updateData' booking.id %}" class="btn-custom btn-update me-2" role="button">Update</a>
+
+                  <form action="{% url 'deleteData' booking.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-custom btn-delete">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-12">
+          <p class="text-center text-light">No upcoming events found.</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- COMPLETED EVENTS -->
+    <h4 style="color:#fff; margin-top:8px; margin-bottom:10px;">✔ Event Completed</h4>
+    <div class="row g-4 justify-content-center">
+      {% if completed and completed.exists %}
+        {% for booking in completed %}
+          <div class="col-lg-4 col-md-6">
+            <div class="card completed">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <h5 class="card-title mb-0">{{ booking.event_type }}</h5>
+                  <div class="badge-completed">Completed</div>
+                </div>
+                <hr>
+                <p><strong>Booked By:</strong> {{ booking.name }}</p>
+                <p><strong>Email:</strong> {{ booking.email }}</p>
+                <p><strong>Event Date:</strong> {{ booking.date }}</p>
+                <p><strong>Guests Total:</strong> {{ booking.guestsc }}</p>
+                <p><strong>Message:</strong> {{ booking.message|default:"—" }}</p>
+
+                <!-- Optional: Allow view only. Hide edit/delete for completed -->
+                <div class="mt-3">
+                  <!-- Example: view-only link (if you have a detail view) -->
+                  {% if booking.get_absolute_url %}
+                    <a href="{{ booking.get_absolute_url }}" class="btn-custom" style="background:#0d6efd; color:#fff; border-radius:8px; padding:6px 10px;">View</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-12">
+          <p class="text-center text-light">No completed events found.</p>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 AurooEvents. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

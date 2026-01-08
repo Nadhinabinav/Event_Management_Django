@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Booking | AurooEvents</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      margin:0;
+      padding:0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .update-container {
+      width: 100%;
+      max-width: 500px;
+      background-color: #111;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff9800;
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .form-control {
+      border-radius: 8px;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
+    }
+
+    .form-control:focus {
+      background-color: #222;
+      color: #fff;
+      border-color: #ff9800;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background-color: #ff9800;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #e68900;
+      transform: scale(1.02);
+    }
+
+    img {
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #ff9800;
+    }
+
+    a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="update-container">
+    <h2>Update Your Booking</h2>
+
+    <form action="{% url 'updateData' data.id %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" value="{{ data.name }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" value="{{ data.email }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Event Type</label>
+        <input type="text" class="form-control" name="event_type" value="{{ data.event_type }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Event Date</label>
+        <input type="date" class="form-control" name="date" value="{{ data.date|date:'Y-m-d' }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Guests (Total / Veg / Non-Veg)</label>
+        <input type="text" class="form-control" name="guestsc" value="{{ data.guestsc }}" required>
+        <input type="text" class="form-control mt-1" name="guestsv" value="{{ data.guestsv }}" required>
+        <input type="text" class="form-control mt-1" name="guestsn" value="{{ data.guestsn }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea class="form-control" name="message" rows="3">{{ data.message }}</textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update Booking</button>
+    </form>
+
+  </div>
+
+</body>
+</html>
