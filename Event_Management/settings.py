@@ -30,9 +30,8 @@ SECRET_KEY = 'django-insecure-9pbfq#5qhfvqj6mdo7lyh4_bf=y4qzia_7x%*_0us#i)y3^72i
 
 
 DEBUG = False
-ALLOWED_HOSTS = [
-    'event-management-django-ra4a.onrender.com',
-]
+ALLOWED_HOSTS = ['*']
+
 
 CSRF_TRUSTED_ORIGINS = [
     'https://event-management-django-ra4a.onrender.com',
