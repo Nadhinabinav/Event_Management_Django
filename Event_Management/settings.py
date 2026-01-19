@@ -24,9 +24,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9pbfq#5qhfvqj6mdo7lyh4_bf=y4qzia_7x%*_0us#i)y3^72i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*']
+
+
+DEBUG = False
+ALLOWED_HOSTS = [
+    'event-management-django-ra4a.onrender.com',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://event-management-django-ra4a.onrender.com',
+]
 
 
 # Application definition
